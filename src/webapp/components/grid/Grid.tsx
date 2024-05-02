@@ -14,7 +14,7 @@ function useGrid() {
 
     const patternSize = viewport === "small" ? 16 : 32;
     const cols = Math.floor(windowWidth / patternSize) - 1;
-    const rows = Math.floor((windowHeight - 100) / patternSize);
+    const rows = Math.floor((windowHeight - 60) / patternSize) - 1;
 
     return { cols, rows, patternSize };
 }
@@ -49,17 +49,22 @@ interface BackgroundProps {
 }
 
 const Background = styled.div<BackgroundProps>`
-    width: ${props => props.cols * props.patternSize}px;
-    height: ${props => props.rows * props.patternSize}px;
-    margin: 1em auto 0;
-    background-image: url(${props => getSvgPattern(props.patternSize)});
-    background-size: ${({ patternSize }) => `${patternSize}px ${patternSize}px`};
-    background-position: ${({ patternSize }) => `${patternSize / 2}px ${patternSize / 2}px`};
-    background-repeat: repeat;
-    background-opacity: 0;
+    --width: ${props => props.cols * props.patternSize}px;
+    --height: ${props => props.rows * props.patternSize}px;
+    --url: url(${props => getSvgPattern(props.patternSize)});
+    --background-size: ${({ patternSize }) => `${patternSize}px ${patternSize}px`};
+    --background-position: ${({ patternSize }) => `${patternSize / 2}px ${patternSize / 2}px`};
+
     display: flex;
     justify-content: center;
     align-items: center;
+    width: var(--width);
+    height: var(--height);
+    margin: 1em auto 0;
+    background-image: var(--url);
+    background-size: var(--background-size);
+    background-position: var(--background-position);
+    background-repeat: repeat;
 `;
 
 function getSvgPattern(patternSize: number) {

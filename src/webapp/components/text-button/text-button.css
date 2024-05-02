@@ -1,0 +1,5 @@
+button.text-button {
+    all: unset;
+    transition: color 0.1s ease;
+    color: var(--text-primary);
+}

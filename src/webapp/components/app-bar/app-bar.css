@@ -2,8 +2,53 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
+    padding: 1em 2em;
     height: 60px;
     box-sizing: border-box;
-    color: #fff;
+    border-bottom: 1px solid var(--discreet);
+}
+
+.app.mobile .app-bar {
+    border-bottom: unset;
+}
+
+.search-bar {
+    all: unset;
+    border: none;
+    border-radius: none;
+    color: var(--text-primary);
+    background: transparent;
+    width: 50ch;
+}
+
+.search-bar::placeholder {
+    color: var(--text-discreet);
+}
+
+.search-bar:focus {
+    outline: none;
+    border-bottom: 1px solid var(--text-discreet);
+}
+
+.app-bar button.text-button {
+    color: var(--text-discreet);
+}
+
+.app-bar button.text-button:focus,
+.app-bar button.text-button:hover {
+    color: rgba(255, 255, 255, 0.67);
+}
+
+.app-bar button.text-button:focus-visible {
+    text-decoration: underline;
+}
+
+.app-bar button.text-button:active {
+    color: rgba(255, 255, 255, 1);
+}
+
+@media (max-width: 600px) {
+    .search-bar {
+        width: 15ch;
+    }
 }
