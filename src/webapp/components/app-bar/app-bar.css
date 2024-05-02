@@ -5,7 +5,7 @@
     padding: 1em 2em;
     height: 60px;
     box-sizing: border-box;
-    border-bottom: 1px solid var(--discreet);
+    border-bottom: 1px solid var(--muted);
 }
 
 .app.mobile .app-bar {
@@ -22,16 +22,16 @@
 }
 
 .search-bar::placeholder {
-    color: var(--text-discreet);
+    color: var(--text-muted);
 }
 
 .search-bar:focus {
     outline: none;
-    border-bottom: 1px solid var(--text-discreet);
+    border-bottom: 1px solid var(--text-muted);
 }
 
 .app-bar button.text-button {
-    color: var(--text-discreet);
+    color: var(--text-muted);
 }
 
 .app-bar button.text-button:focus,

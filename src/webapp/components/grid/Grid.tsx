@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { useAppContext } from "../../app/context";
 
-export const Grid: React.FC = React.memo(() => {
+export const Grid = React.memo((props: React.PropsWithChildren) => {
     const { cols, rows, patternSize } = useGrid();
 
-    return <Background cols={cols} rows={rows} patternSize={patternSize}></Background>;
+    return (
+        <Background cols={cols} rows={rows} patternSize={patternSize}>
+            {props.children}
+        </Background>
+    );
 });
 
 function useGrid() {
@@ -55,18 +59,17 @@ const Background = styled.div<BackgroundProps>`
     --background-size: ${({ patternSize }) => `${patternSize}px ${patternSize}px`};
     --background-position: ${({ patternSize }) => `${patternSize / 2}px ${patternSize / 2}px`};
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: var(--width);
     height: var(--height);
-    margin: 1em auto 0;
     background-image: var(--url);
     background-size: var(--background-size);
     background-position: var(--background-position);
+
+    margin: 1em auto 0;
+    padding: var(--background-position);
     background-repeat: repeat;
 `;
 
 function getSvgPattern(patternSize: number) {
-    return `'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" width="${patternSize}px" height="${patternSize}px" opacity=".4"><rect width="1" height="1" x="0" y="0"/></svg>'`;
+    return `'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" width="${patternSize}px" height="${patternSize}px" opacity=".2"><rect width="1" height="1" x="0" y="0"/></svg>'`;
 }

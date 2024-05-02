@@ -13,8 +13,10 @@
 
     /* Colors */
     --text-primary: rgba(255, 255, 255, 0.87);
-    --text-discreet: rgba(255, 255, 255, 0.2);
-    --discreet: rgba(255, 255, 255, 0.1);
+    --text-muted: rgba(255, 255, 255, 0.2);
+    --primary: rgba(255, 255, 255, 0.87);
+    --secondary: rgba(255, 255, 255, 0.3);
+    --muted: rgba(255, 255, 255, 0.1);
 }
 
 body {

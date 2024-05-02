@@ -1,0 +1,6 @@
+.widget {
+    width: 256px;
+    height: 128px;
+    border: 2px solid var(--secondary);
+    box-sizing: border-box;
+}

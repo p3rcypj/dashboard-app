@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "../components/grid/Grid";
 import { AppContext, defaultAppContext } from "./context";
 import { AppBar } from "../components/app-bar/AppBar";
+import { TimeWidget } from "../widgets/time/TimeWidget";
 import "./styles.css";
 
 export const App = React.memo(() => {
@@ -12,7 +13,9 @@ export const App = React.memo(() => {
         <AppContext.Provider value={appContext}>
             <div className={className}>
                 <AppBar />
-                <Grid />
+                <Grid>
+                    <TimeWidget />
+                </Grid>
             </div>
         </AppContext.Provider>
     );
