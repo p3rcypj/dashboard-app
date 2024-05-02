@@ -1,0 +1,9 @@
+.app-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    height: 60px;
+    box-sizing: border-box;
+    color: #fff;
+}
