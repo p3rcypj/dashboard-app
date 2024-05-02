@@ -3,10 +3,12 @@ import { isMobile } from "../utils/isMobile";
 
 interface AppContextState {
     viewport: "small" | "medium" | "large";
+    isMobile: boolean;
 }
 
 export const defaultAppContext: AppContextState = {
     viewport: isMobile() ? "small" : "medium",
+    isMobile: isMobile(),
 };
 
 export const AppContext = React.createContext<AppContextState>(defaultAppContext);
