@@ -1,8 +1,4 @@
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1;
-    font-weight: 400;
-
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #000000;
@@ -17,6 +13,12 @@
 }
 
 body {
+    font-family: "Cascadia Code", "Cascadia Mono", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
+        "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono",
+        "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+    line-height: 1;
+    font-weight: 400;
+
     margin: 0;
 }
 
