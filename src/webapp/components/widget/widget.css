@@ -1,6 +1,31 @@
 .widget {
     width: 256px;
     height: 128px;
-    border: 2px solid var(--secondary);
+    font-size: var(--font-size);
+    border-top: var(--widget-border-top);
+    border-left: 2px solid var(--secondary);
+    border-right: 2px solid var(--secondary);
+    border-bottom: 2px solid var(--secondary);
     box-sizing: border-box;
+}
+
+.widget-header {
+    width: 100%;
+    color: var(--text-secondary);
+    background: var(--secondary);
+    justify-content: space-between;
+}
+
+.widget-title {
+    flex-grow: 1;
+    font-size: 0.875em;
+    padding: 0.375em 0;
+    margin-left: 0.25em;
+    margin-bottom: 0;
+    color: var(--text-primary);
+}
+
+.widget-content {
+    flex-grow: 1;
+    width: 100%;
 }

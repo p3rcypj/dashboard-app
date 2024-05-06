@@ -1,14 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import isPropValid from "@emotion/is-prop-valid";
 import { useAppContext } from "../../app/context";
+import { GridContext } from "./grid-context";
 
 export const Grid = React.memo((props: React.PropsWithChildren) => {
     const { cols, rows, patternSize } = useGrid();
 
     return (
-        <Background cols={cols} rows={rows} patternSize={patternSize}>
-            {props.children}
-        </Background>
+        <GridContext.Provider value={{ patternSize }}>
+            <Background cols={cols} rows={rows} patternSize={patternSize}>
+                {props.children}
+            </Background>
+        </GridContext.Provider>
     );
 });
 
@@ -52,21 +56,23 @@ interface BackgroundProps {
     patternSize: number;
 }
 
-const Background = styled.div<BackgroundProps>`
+const Background = styled.div.withConfig({
+    shouldForwardProp: prop => isPropValid(prop) && !["cols", "rows", "patternSize"].includes(prop),
+})<BackgroundProps>`
     --width: ${props => props.cols * props.patternSize}px;
     --height: ${props => props.rows * props.patternSize}px;
     --url: url(${props => getSvgPattern(props.patternSize)});
-    --background-size: ${({ patternSize }) => `${patternSize}px ${patternSize}px`};
-    --background-position: ${({ patternSize }) => `${patternSize / 2}px ${patternSize / 2}px`};
+    --xy-pattern-size: ${({ patternSize }) => `${patternSize}px ${patternSize}px`};
+    --half-pattern-size: ${({ patternSize }) => `${patternSize / 2}px ${patternSize / 2}px`};
 
     width: var(--width);
     height: var(--height);
     background-image: var(--url);
-    background-size: var(--background-size);
-    background-position: var(--background-position);
+    background-size: var(--xy-pattern-size);
+    background-position: var(--half-pattern-size);
 
     margin: 1em auto 0;
-    padding: var(--background-position);
+    padding: var(--half-pattern-size);
     background-repeat: repeat;
 `;
 

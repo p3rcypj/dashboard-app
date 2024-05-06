@@ -1,0 +1,8 @@
+button.icon-button {
+    all: unset;
+    transition: color 0.1s ease;
+    color: currentColor;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

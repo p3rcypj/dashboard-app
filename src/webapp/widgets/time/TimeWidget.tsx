@@ -1,17 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { FlexBox } from "../../components/flex-box/FlexBox";
 import { Widget } from "../../components/widget/Widget";
 
 export const TimeWidget: React.FC = React.memo(() => {
     const time = useTime();
 
     return (
-        <StyledWidget>
-            <FlexBox>
-                <Display>{time}</Display>
-            </FlexBox>
-        </StyledWidget>
+        <Widget title="Time" defaultCols={8} defaultRows={4}>
+            <Display>{time}</Display>
+        </Widget>
     );
 });
 
@@ -41,14 +38,8 @@ function getCurrentTime() {
     return `${hours}:${minutes}`;
 }
 
-const StyledWidget = styled(Widget)`
-    &.widget {
-        border: unset !important;
-    }
-`;
-
 const Display = styled.span`
-    font-size: 3rem;
+    font-size: 3em;
     color: var(--text-primary);
     font-weight: 700;
 `;
