@@ -17,7 +17,7 @@ export const Widget: React.FC<WidgetProps> = React.memo(props => {
     const { defaultCols: cols, defaultRows: rows, className } = props;
 
     const { patternSize } = useGridContext();
-    const { isMobile } = useAppContext();
+    const { isMobile, viewport } = useAppContext();
 
     const classNames = ["widget", className].join(" ");
 
@@ -32,7 +32,7 @@ export const Widget: React.FC<WidgetProps> = React.memo(props => {
     );
 
     return (
-        <MobileDependentFlexBox className={classNames} {...widgetProps} isMobile={isMobile}>
+        <ViewportFlexBox className={classNames} {...widgetProps} isMobile={isMobile} viewport={viewport}>
             <IconContext.Provider value={headerIcons}>
                 {!isMobile && (
                     <FlexBox className="widget-header" justifyContent="space-between">
@@ -44,12 +44,14 @@ export const Widget: React.FC<WidgetProps> = React.memo(props => {
             <FlexBox className="widget-content" flexGrow={1}>
                 {props.children}
             </FlexBox>
-        </MobileDependentFlexBox>
+        </ViewportFlexBox>
     );
 });
 
-const MobileDependentFlexBox = styled(FlexBox)<{ isMobile: boolean } & FlexBoxProps>`
-    --font-size: ${props => (props.isMobile ? "0.5rem" : "1rem")};
+type ViewportFlexBoxProps = { viewport: "small" | "medium" | "large"; isMobile: boolean } & FlexBoxProps;
+
+const ViewportFlexBox = styled(FlexBox)<ViewportFlexBoxProps>`
+    --font-size: ${props => (props.viewport === "small" ? "0.5rem" : "1rem")};
     --widget-border-top: ${props => (props.isMobile ? "2px solid var(--secondary)" : "none")};
 `;
 
